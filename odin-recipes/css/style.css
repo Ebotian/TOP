@@ -1,0 +1,30 @@
+h1 {
+	color: black;
+	background-color: gold;
+	font-size: 40px;
+  text-align: center;
+}
+/* 注释 */
+p {
+	color: deepskyblue;
+}
+.ulist {
+	font-weight: 800;
+	background-color: greenyellow;
+}
+#garlic {
+  margin:0 auto;
+  text-align: center;
+	color: blueviolet;
+	background-color: blanchedalmond;
+}
+li.cup{
+  color: azure;
+}
+ul.cup{
+  color: aqua;
+}/* 不起作用 */
+
+a{
+  font-style: italic;
+}
