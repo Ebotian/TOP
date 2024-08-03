@@ -14,5 +14,5 @@ function lastLetter(string) {
 }
 let myfun = (a, b) => a + b;
 
-let answer=parseInt(prompt("Enter a number:"));
+let answer = parseInt(prompt("Enter a number:"));
 console.log(add7(answer));
