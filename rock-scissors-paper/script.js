@@ -3,27 +3,20 @@ function getComputerChoice() {
 	switch (true) {
 		case Math.random() < 0.34:
 			return "rock";
-			break;
 		case Math.random() < 0.67:
 			return "paper";
-			break;
 		case Math.random() < 1:
 			return "scissors";
-			break;
 		default:
 			return "error";
-			break;
 	}
-}
-console.log(getComputerChoice());
-function getHumanChoice() {
-	let answer = prompt("What's your choice?");
-	return answer;
 }
 // console.log(getHumanChoice());
 let humanScore = 0;
 let computerScore = 0;
+let round = 0;
 function playRound(humanChoice, computerChoice) {
+  round++;
 	humanChoice = humanChoice.toLowerCase();
 	computerChoice = computerChoice.toLowerCase();
 	const choices = ["rock", "paper", "scissors"];
@@ -61,18 +54,40 @@ function playRound(humanChoice, computerChoice) {
 		}
 	}
 }
+buttonRock = document.createElement("button");
+buttonRock.textContent = "rock";
+buttonPaper = document.createElement("button");
+buttonPaper.textContent = "paper";
+buttonScissors = document.createElement("button");
+buttonScissors.textContent = "scissors";
+document.body.appendChild(buttonRock);
+document.body.appendChild(buttonPaper);
+document.body.appendChild(buttonScissors);
 
-// playRound(hunmanSelection, computerSelection);
-function playGame() {
-	for (let i = 0; i < 5; i++) {
-		const hunmanSelection = getHumanChoice();
-		const computerSelection = getComputerChoice();
-		console.log(playRound(hunmanSelection, computerSelection));
-	}
-	if (humanScore > computerScore) {
-		return "You win!";
-	} else if (humanScore < computerScore) {
-		return "You lose!";
-	}
+const ROUND=5;
+function displayResult(humanChoice) {
+  if (round < ROUND) {
+    const result = document.createElement("p");
+    result.textContent = playRound(humanChoice, getComputerChoice());
+    document.body.appendChild(result);
+  }
+  else {
+    const result = document.createElement("p");
+    result.textContent = playGame();
+    document.body.appendChild(result);
+  }
 }
-console.log(playGame());
+
+buttonRock.addEventListener("click", () => displayResult("rock"));
+buttonPaper.addEventListener("click", () => displayResult("paper"));
+buttonScissors.addEventListener("click", () => displayResult("scissors"));
+
+function playGame() {
+	if (humanScore > computerScore) {
+		return "你赢了！";
+	} else if (humanScore < computerScore) {
+		return "你输了！";
+	} else {
+    return "平局！";
+  }
+}
